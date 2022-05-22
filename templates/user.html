@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="vh-100">
+    <div class="container h-50">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="card" style="width: 18rem;">
+          <h5 style="padding-top: 0.3rem;">User Info:</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Username: <strong>{{ userinfo }}</strong></li>
+                <li class="list-group-item">Posts: {{ userposts }}</li>
+                <li class="list-group-item">User-ID: {{ userid }}</li>
+              </ul>
+
+              {% if username == userinfo and not username == "" %}
+
+              <div class="card-body">
+                <a href="{{ url_for("settings") }}" class="btn btn-primary">My Profile</a>
+              
+              {% endif %}
+          </div>
+      </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="padding-top: 0.3rem;">Latest Posts</h3>
+        </div>
+    </div>
+    <br>
+    
+    {% if posts == [] %}
+        <p>No posts found :(</p>
+    {% else %}
+
+        {% for post in posts %}
+            <div class="card" style="border: 3px solid #D2D2D2;">
+                <div class="card-body">
+                    {% if post.author.username == username and not username == "" %}
+                    <a href="/delete/{{ post.id }}"><button class="btn btn-danger btn-sm" style="float: right;">Delete</button></a>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>{{ post.title }}</h5>
+                            <small class="text-muted"><a href="/user/{{ post.author.username }}">{{ post.author.username }}</a> {% if username == post.author.username %}(You){% endif %}: {{ post.date_posted.strftime("%d.%m.%Y, %H:%M") }}</small>
+                            <p>{{ post.content | safe }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+        
+    {% endif %}
+</div>
+{% endblock %}

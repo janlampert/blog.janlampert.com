@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="vh-100">
+    <div class="container h-50">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-xl-5">
+
+          {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+              <div class="alert alert-danger" role="alert">
+                  {%- for message in errors %}
+                  {{ message }}
+                  {% endfor -%}
+              </div>
+            {% endif %}
+          {% endwith %}
+
+          {% with infos = get_flashed_messages(category_filter=["info"]) %}
+            {% if infos %}
+              <div class="alert alert-success" role="alert">
+                  {%- for message in infos %}
+                  {{ message }}
+                  {% endfor -%}
+              </div>
+            {% endif %}
+          {% endwith %}
+          
+          <form action="#" method="POST">
+            <!-- Email input -->
+            <div class="form-outline mb-2">
+              <input type="username" class="form-control form-control-lg" name="username"/>
+              <label class="form-label">Username</label>
+            </div>
+  
+            <!-- Password input -->
+            <div class="form-outline mb-2">
+              <input type="password" class="form-control form-control-lg" name="password"/>
+              <label class="form-label">Password</label>
+            </div>
+  
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

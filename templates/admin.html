@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="vh-100">
+    <div class="container h-50">
+      <div class="row d-flex align-items-center h-100">
+        <div class="col-xl-5">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                  {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          <form action="#" method="POST">
+            <!-- Title input -->
+            <div class="form-outline mb-2">
+              <input type="title" class="form-control form-control-lg" name="title" placeholder="e.g. extremely cool story"/>
+              <label class="form-label">Title</label>
+            </div>
+  
+            <!-- Content input -->
+            <div class="form-outline mb-2">
+              <textarea type="title" class="form-control form-control-lg" name="content" placeholder="e.g. it was a beautiful day..."></textarea>
+              <label class="form-label">Content</label>
+            </div>
+  
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Post</button>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+</section>
+
+<p>Site blocked.</p>
+
+{% endblock %}

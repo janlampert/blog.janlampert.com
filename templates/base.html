@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JanoBlogo - {{ title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href=" {{ url_for("index") }} " style="padding-left: 0.3rem">Blog</a>
+      
+          <ul class="navbar-nav">
+            
+            {% if not username == None %}
+            <div class="dropdown">
+              <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="color: #9a9c93;">
+                Profile
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                  <a class="dropdown-item" href=" {{ url_for("index") }} " style="padding-right: 0.3rem">🏠Home</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href=" {{ url_for("admin") }} " style="padding-right: 0.3rem">📓Admin</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href=" {{ url_for("settings") }} " style="padding-right: 0.3rem">⚙️Profile</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href=" {{ url_for("logout") }} " style="padding-right: 0.3rem;">👋Logout</a>
+                </li>
+              </ul>
+            </div>
+            {% else %}
+            <li>
+                <a class="nav-link" href=" {{ url_for("login") }} " style="padding-right: 0.3rem">Login</a>
+            </li>
+            
+            {% endif %}
+            <li>
+              <a class="nav-text" style="padding-right: 0.3rem">Username: {{ username }}</a>
+            </li>
+        </ul>
+      </nav>
+  
+      {% block content %}
+      {% endblock %}
+      <footer class="text-center">
+        <div style="font-size: 0.8rem;">
+          © 2022 Copyright:
+          <a href="https://twitter.com/Janlampert1" target="_blank">Jan Lampert</a>
+        </div>
+      </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

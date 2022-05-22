@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+<div class="container" style="padding-top: 0.3rem;">
+    <div class="row align-items-center h-100">
+        <div class="col-6 mx-auto">
+            <div class="card h-100 justify-content-center">
+                <div>
+                    <div class="card-header">
+                        User: <strong>{{ username }}</strong>
+                    </div>
+                    <div class="card-body">
+                        <label>Username:</label>
+                        <h5>{{ username }}</h5>
+                        <br>
+                        <label>Posts:</label>
+                        <h5>{{ posts_len }}</h5>
+                        <br>
+                        <label>Posts titles:</label>
+                        <ul>
+                        {% for post in user_posts %}
+                            <li>
+                                {{ post.title }}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<form action="#" method="POST">
+</form>
+
+{% endblock %}
